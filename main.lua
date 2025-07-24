@@ -2,166 +2,145 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>By Unitec</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat estilo Roblox con toggle</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
-      background-size: 800% 800%;
-      animation: rainbowBG 10s ease infinite;
-      color: #333;
-    }
+    body { margin: 0; font-family: sans-serif; }
 
-    @keyframes rainbowBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    header {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.8rem;
-    }
-
-    .mensaje {
-      text-align: center;
-      font-size: 1rem;
-      margin: 10px 0;
-      color: #000;
-      font-weight: bold;
-    }
-
-    .productos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 1rem;
-      gap: 1.2rem;
-    }
-
-    .producto {
-      background-color: white;
-      border-radius: 10px;
-      padding: 1rem;
-      width: 240px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .producto img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .producto h3 {
-      margin: 0.8rem 0 0.5rem;
-    }
-
-    .producto button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .producto button:hover {
-      background-color: #0056b3;
-    }
-
-    /* BOTÓN DE DESCUENTO FLOTANTE */
-    .descuento-button {
+    /* Botón flotante */
+    #toggleChatBtn {
       position: fixed;
       bottom: 20px;
-      right: 15px;
-      background-color: #ff4081;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #00ffcc;
+      border: none;
+      border-radius: 50%;
+      font-size: 26px;
+      color: black;
       font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      transition: background 0.3s ease;
+      cursor: pointer;
+      z-index: 10000;
     }
 
-    .descuento-button:hover {
-      background-color: #e91e63;
+    /* Chat lateral */
+    #robloxChat {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100vh;
+      background: #222;
+      color: white;
+      display: none;
+      flex-direction: column;
+      border-left: 2px solid #111;
+      z-index: 9999;
     }
 
-    @media screen and (max-width: 600px) {
-      .producto {
-        width: 90%;
-      }
+    #chatHeader {
+      background: #111;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom: 1px solid #333;
+    }
+
+    #chatMessages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .msg {
+      margin-bottom: 10px;
+    }
+
+    .userMsg { color: #00ffcc; }
+    .botMsg { color: #fca311; }
+
+    #chatInput {
+      display: flex;
+      border-top: 1px solid #444;
+    }
+
+    #chatInput input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #333;
+      color: white;
+      font-size: 14px;
+    }
+
+    #chatInput button {
+      background: #00ffcc;
+      border: none;
+      padding: 10px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <header>By Unitec</header>
+<!-- Botón flotante -->
+<button id="toggleChatBtn">💬</button>
 
-  <div class="mensaje">RECUERDA PUEDES PERSONALIZARLO A TU GUSTO :3</div>
-
-  <div class="productos">
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Cartuchera" alt="Cartuchera">
-      <h3>Cartuchera Neceser</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Foto+Roca" alt="Foto Roca">
-      <h3>Foto Roca</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Llavero" alt="Llavero">
-      <h3>Llavero Sublimable</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Libreta" alt="Libreta">
-      <h3>Libreta</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Morral" alt="Morral">
-      <h3>Morral Sublimable</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Mouse+Pad" alt="Mouse Pad">
-      <h3>Mouse Pad</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Polos" alt="Polos">
-      <h3>Polos Sublimables</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Taza+M%C3%A1gica" alt="Taza">
-      <h3>Taza Mágica</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
-    <div class="producto">
-      <img src="https://via.placeholder.com/240x160?text=Termo+Digital" alt="Termo">
-      <h3>Termo Digital</h3>
-      <button onclick="alert('Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540')">Comprar</button>
-    </div>
+<!-- Chat lateral estilo Roblox -->
+<div id="robloxChat">
+  <div id="chatHeader">💬 Chat</div>
+  <div id="chatMessages">
+    <div class="msg botMsg"><strong>Bot:</strong> ¡Hola! ¿Cómo puedo ayudarte?</div>
   </div>
+  <div id="chatInput">
+    <input type="text" id="userInput" placeholder="Escribe aquí...">
+    <button onclick="sendMsg()">➤</button>
+  </div>
+</div>
 
-  <!-- BOTÓN DE DESCUENTO -->
-  <a href="https://link-hub.net/1368874/f4Cc33ZaCaQi" class="descuento-button" target="_blank">
-    ¡Obtén tu Descuento Aquí!
-  </a>
+<script>
+  const toggleBtn = document.getElementById("toggleChatBtn");
+  const chatBox = document.getElementById("robloxChat");
+
+  toggleBtn.onclick = () => {
+    chatBox.style.display = (chatBox.style.display === "flex") ? "none" : "flex";
+  };
+
+  function sendMsg() {
+    const input = document.getElementById("userInput");
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage("user", text);
+    input.value = "";
+
+    setTimeout(() => {
+      const response = getBotResponse(text.toLowerCase());
+      addMessage("bot", response);
+    }, 400);
+  }
+
+  function addMessage(sender, text) {
+    const chat = document.getElementById("chatMessages");
+    const msgDiv = document.createElement("div");
+    msgDiv.classList.add("msg", sender === "user" ? "userMsg" : "botMsg");
+    msgDiv.innerHTML = `<strong>${sender === "user" ? "Tú" : "Bot"}:</strong> ${text}`;
+    chat.appendChild(msgDiv);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function getBotResponse(msg) {
+    if (msg.includes("hola")) return "¡Hola! ¿Quieres saber más sobre nuestros servicios?";
+    if (msg.includes("web")) return "Ofrecemos diseño web profesional. ¿Qué tipo de página quieres?";
+    if (msg.includes("precio")) return "Nuestros precios empiezan desde $29. ¿Quieres una cotización?";
+    if (msg.includes("whatsapp")) return "Puedes escribirme por WhatsApp: https://wa.me/51XXXXXXXX";
+    return "Hmm... no entendí. Pero dime qué necesitas y te ayudo.";
+  }
+</script>
 
 </body>
 </html>
