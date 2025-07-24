@@ -1,142 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fe y Alegría 10 - Productos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>By Unitec</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-size: cover;
-      background-position: center;
-      color: white;
+      background: linear-gradient(to bottom right, #d4fc79, #96e6a1);
+      animation: backgroundChange 10s infinite alternate;
     }
+
+    @keyframes backgroundChange {
+      0% { background: #ffe6f0; }
+      25% { background: #e6f7ff; }
+      50% { background: #e6ffe6; }
+      75% { background: #fff5e6; }
+      100% { background: #ffe6f0; }
+    }
+
     header {
-      background-color: rgba(0,0,0,0.6);
+      background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+      color: white;
       padding: 20px;
       text-align: center;
-      font-size: 2em;
+      font-size: 28px;
+      font-weight: bold;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .mensaje {
+      text-align: center;
+      font-size: 18px;
+      margin: 10px;
+      color: #222;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .productos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .producto {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin: 10px;
+      padding: 10px;
+      width: 180px;
+      text-align: center;
+    }
+
+    .producto img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .producto p {
+      margin: 10px 0 5px;
       font-weight: bold;
     }
-    .productos {
+
+    .botones {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
-      padding: 20px;
+      margin: 20px 0;
     }
-    .producto {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .producto img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .botones {
-      margin-top: 10px;
-    }
-    button {
-      background-color: #00c896;
-      border: none;
-      padding: 10px 15px;
+
+    .boton {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
       color: white;
-      font-size: 1em;
-      border-radius: 5px;
+      border: none;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 30px;
       cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s;
     }
-    button:hover {
-      background-color: #009f77;
+
+    .boton:hover {
+      transform: scale(1.05);
     }
-    .descuento {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: gold;
+
+    .footer {
+      text-align: center;
       padding: 10px;
-      border-radius: 10px;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      animation: brillar 1s infinite alternate;
-    }
-    @keyframes brillar {
-      from {box-shadow: 0 0 5px gold;}
-      to {box-shadow: 0 0 20px gold;}
+      background-color: #111;
+      color: white;
+      font-size: 14px;
     }
 
     @media screen and (max-width: 600px) {
-      header {
-        font-size: 1.5em;
-      }
-      button {
-        font-size: 0.9em;
+      .producto {
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="descuento" onclick="window.location.href='https://link-hub.net/1368874/f4Cc33ZaCaQi'">🎉 ¡Obtener Descuento!</div>
+  <header>By Unitec</header>
 
-<header>Productos - Fe y Alegría 10</header>
+  <div class="mensaje">RECUERDA PUEDES PERSONALIZARLO A TU GUSTO :3</div>
 
-<div class="productos" id="productos-lista">
-  <!-- Productos aquí -->
-</div>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://i.imgur.com/zYl6aHX.jpeg" alt="Cartuchera Neceser">
+      <p>Cartuchera Neceser</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/H1oABaW.jpeg" alt="Foto Roca">
+      <p>Foto Roca</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/Z3AQED4.jpeg" alt="Llavero Sublimable">
+      <p>Llavero Sublimable</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/XH7J5ab.jpeg" alt="Libreta">
+      <p>Libreta</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/mRZLaQB.jpeg" alt="Morral Sublimable">
+      <p>Morral Sublimable</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/W8OD59z.jpeg" alt="Mouse Pad">
+      <p>Mouse Pad</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/2v9jFJG.jpeg" alt="Polos Sublimables">
+      <p>Polos Sublimables</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/VvpeErf.jpeg" alt="Taza Mágica">
+      <p>Taza Mágica</p>
+    </div>
+    <div class="producto">
+      <img src="https://i.imgur.com/qOYr7Ej.jpeg" alt="Termo Digital">
+      <p>Termo Digital</p>
+    </div>
+  </div>
 
-<script>
-  // Detectar estación actual
-  const estaciones = {
-    verano: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
-    invierno: 'https://images.unsplash.com/photo-1610394213321-ec1470a3c545',
-    primavera: 'https://images.unsplash.com/photo-1497215842964-222b430dc094',
-    otono: 'https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6'
-  };
-  const mes = new Date().getMonth();
-  let estacion = 'verano';
-  if (mes >= 2 && mes <= 4) estacion = 'otoño';
-  else if (mes >= 5 && mes <= 7) estacion = 'invierno';
-  else if (mes >= 8 && mes <= 10) estacion = 'primavera';
+  <div class="botones">
+    <button class="boton" onclick="comprar()">Comprar</button>
+    <button class="boton" onclick="window.location.href='https://link-hub.net/1368874/f4Cc33ZaCaQi'">Obtener Descuento</button>
+  </div>
 
-  document.body.style.backgroundImage = `url(${estaciones[estacion]})`;
+  <div class="footer">
+    Fe y Alegría 10 - Lima, Perú © 2025
+  </div>
 
-  // Productos
-  const productos = [
-    { nombre: "Cartuchera neceser", img: "https://i.imgur.com/RptQ67c.jpg" },
-    { nombre: "Foto roca", img: "https://i.imgur.com/WiMnR8X.jpg" },
-    { nombre: "Llavero sublimable", img: "https://i.imgur.com/G6R6QkA.jpg" },
-    { nombre: "Libreta", img: "https://i.imgur.com/Ec3v0Z1.jpg" },
-    { nombre: "Morral sublimable", img: "https://i.imgur.com/pt6n3sj.jpg" },
-    { nombre: "Mouse pad", img: "https://i.imgur.com/iqRmcUN.jpg" },
-    { nombre: "Polos sublimables", img: "https://i.imgur.com/I1s7cW4.jpg" },
-    { nombre: "Tazas mágicas", img: "https://i.imgur.com/VyF7O1g.jpg" },
-    { nombre: "Termo digital", img: "https://i.imgur.com/hYq2v5S.jpg" },
-  ];
-
-  const contenedor = document.getElementById("productos-lista");
-  productos.forEach(prod => {
-    const div = document.createElement("div");
-    div.className = "producto";
-    div.innerHTML = `
-      <h2>${prod.nombre}</h2>
-      <img src="${prod.img}" alt="${prod.nombre}">
-      <div class="botones">
-        <button onclick="contactar()">🛒 Comprar</button>
-      </div>
-    `;
-    contenedor.appendChild(div);
-  });
-
-  function contactar() {
-    alert("📱 Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540");
-  }
-</script>
+  <script>
+    function comprar() {
+      alert("Contáctate con el proveedor:\n+51 933 818 145\n+51 936 521 540");
+    }
+  </script>
 
 </body>
 </html>
